@@ -28,6 +28,15 @@ Route::get('/auth/callback', function () {
     return SsoService::authorizationCode();
 });
 ```
+
+<p>edit: app/Http/Kernel.php</p>
+
+```
+add to protected $routeMiddleware:
+
+'vandar' => \Vandar\Sso\Middleware\VandarAuthenticate::class,
+
+```
 <br />
 <br />
 <br />
