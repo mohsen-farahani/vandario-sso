@@ -62,3 +62,6 @@ SSO_CLIENT_ID=id
 SSO_CLIENT_SECRET=secret
 SSO_REDIRECT_URI=https://escrow.vandar.io/auth/callback
 ```
+
+
+To get access_token to connect service to service: ``` SsoService::clientCredentials()``` 
