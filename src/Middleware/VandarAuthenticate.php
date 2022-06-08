@@ -23,7 +23,8 @@ class VandarAuthenticate implements AuthenticatesRequests
 
         if ($response && $response->status() === 200) {
             $request->setUserResolver(function () use ($response) {
-                $user = new User($response->json());
+                $result = $response->json();
+                $user = new User($result["data"]);
 
                 return $user;
             });
