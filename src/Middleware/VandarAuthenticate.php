@@ -19,7 +19,7 @@ class VandarAuthenticate implements AuthenticatesRequests
     {
         $response = Http::withToken($request->bearerToken(), 'Bearer')
             ->acceptJson()
-            ->get(config('sso.server_uri').'/api/v1/users/info');
+            ->get(config('sso.server_uri').'/api/v1/users/informations');
 
         if ($response && $response->status() === 200) {
             $request->setUserResolver(function () use ($response) {
