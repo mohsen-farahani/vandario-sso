@@ -5,6 +5,7 @@ namespace Vandar\Sso\Middleware;
 use Closure;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Contracts\Auth\Middleware\AuthenticatesRequests;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Vandar\Sso\Model\User;
 
@@ -22,12 +23,11 @@ class VandarAuthenticate implements AuthenticatesRequests
             ->get(config('sso.server_uri').'/api/v1/users/informations');
 
         if ($response && $response->status() === 200) {
-            $request->setUserResolver(function () use ($response) {
-                $result = $response->json();
-                $user = new User($result["data"]);
+            $result = $response->json();
 
-                return $user;
-            });
+            $user = new User();
+            $user->setData($result['data']);
+            Auth::guard('api')->setUser($user);
 
             return $next($request);
         }
