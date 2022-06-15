@@ -1,6 +1,7 @@
 {
     "name": "vandario/sso",
-    "type": "package",
+    "type": "library",
+    "license": "MIT",
     "description": "sso is OAuth2.0 server provider",
     "autoload": {
         "psr-4": {
