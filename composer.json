@@ -1,5 +1,5 @@
 {
-    "name": "vandar/sso",
+    "name": "vandario/sso",
     "type": "package",
     "description": "sso is OAuth2.0 server provider",
     "autoload": {
