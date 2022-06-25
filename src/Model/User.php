@@ -24,16 +24,16 @@ class User extends Authenticatable
 
     public $auth;
 
-    public function setData(array $userDara)
+    public function setData(array $userData)
     {
-        $this->id = $userDara['id'];
-        $this->mobile = $userDara['mobile'];
-        $this->email = $userDara['email'];
-        $this->fname = $userDara['fname'];
-        $this->lname = $userDara['lname'];
-        $this->fullName = $userDara['full_name'];
-        $this->nationalCode = $userDara['national_code'];
-        $this->birthDate = $userDara['birth_date'];
-        $this->auth = $userDara['auth'] ?? null;
+        $this->id = $userData['id'];
+        $this->mobile = $userData['mobile'];
+        $this->email = $userData['email'];
+        $this->fname = $userData['fname'];
+        $this->lname = $userData['lname'];
+        $this->fullName = $userData['full_name'];
+        $this->nationalCode = $userData['national_code'];
+        $this->birthDate = $userData['birth_date'];
+        $this->auth = $userData['auth'] ?? null;
     }
 }
