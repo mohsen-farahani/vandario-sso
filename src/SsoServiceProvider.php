@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Vandar\Sso;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Routing\Router;
+use Vandar\Sso\Middleware\VandarAuthenticate;
 
 class SsoServiceProvider extends ServiceProvider
 {
@@ -18,6 +20,9 @@ class SsoServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/Configs/sso.php' => config_path('sso.php'),
         ]);
+        
+        $router = $this->app->make(Router::class);
+        $router->aliasMiddleware('vandar', VandarAuthenticate::class);
     }
 
     /**
