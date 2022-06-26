@@ -19,7 +19,9 @@ class VandarAuthenticate implements AuthenticatesRequests
      */
     public function handle($request, Closure $next, ...$guards)
     {
-        $response = Http::withToken($request->bearerToken(), 'Bearer')
+        throw_if(is_null($request->bearerToken()), AuthenticationException::class);
+
+        $response = Http::withToken($request->bearerToken())
             ->acceptJson()
             ->get(config('sso.server_uri').'/api/v1/users/informations');
 
