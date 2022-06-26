@@ -16,11 +16,11 @@ class User extends Authenticatable
 
     public $lname;
 
-    public $fullName;
+    public $name;
 
-    public $nationalCode;
+    public $national_code;
 
-    public $birthDate;
+    public $birthdate;
 
     public $auth;
 
@@ -33,9 +33,9 @@ class User extends Authenticatable
         $this->email = $userData['email'];
         $this->fname = $userData['fname'];
         $this->lname = $userData['lname'];
-        $this->fullName = $userData['full_name'];
-        $this->nationalCode = $userData['national_code'];
-        $this->birthDate = $userData['birth_date'];
+        $this->name = $userData['name'];
+        $this->national_code = $userData['national_code'];
+        $this->birthdate = $userData['birthdate'];
         $this->auth = $userData['auth'] ?? null;
         $this->is_active = $userData['is_active'];
     }
