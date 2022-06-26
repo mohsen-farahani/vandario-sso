@@ -5,6 +5,7 @@ namespace Vandar\Sso\Middleware;
 use Closure;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Contracts\Auth\Middleware\AuthenticatesRequests;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Vandar\Sso\Model\User;
@@ -22,16 +23,18 @@ class VandarAuthenticate implements AuthenticatesRequests
             ->acceptJson()
             ->get(config('sso.server_uri').'/api/v1/users/informations');
 
-        if ($response && $response->status() === 200) {
-            $result = $response->json();
-
-            $user = new User();
-            $user->setData($result['data']);
-            Auth::guard('api')->setUser($user);
-
-            return $next($request);
+        if (!$response || !$response->ok()) {
+            throw new AuthenticationException();
         }
 
-        throw new AuthenticationException();
+        if ($response->json('data.is_active') != 1) {
+            return response()->json(['status' => 0, 'error' => 'حساب کاربری مسدود شده است'], Response::HTTP_BAD_REQUEST);
+        }
+
+        $user = new User();
+        $user->setData($response->json('data'));
+        Auth::guard('api')->setUser($user);
+
+        return $next($request);
     }
 }
