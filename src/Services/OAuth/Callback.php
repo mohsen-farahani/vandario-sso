@@ -38,6 +38,7 @@ class Callback
             'grant_type' => 'client_credentials',
             'client_id' => config('sso.client_id'),
             'client_secret' => config('sso.client_secret'),
+            'scope' => config('sso.scope'),
         ]);
 
         return $this;
