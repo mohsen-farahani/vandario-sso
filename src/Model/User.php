@@ -26,6 +26,8 @@ class User extends Authenticatable
 
     public $is_active;
 
+    public $avatar;
+
     public function setData(array $userData)
     {
         $this->id = $userData['id'];
@@ -38,5 +40,6 @@ class User extends Authenticatable
         $this->birthdate = $userData['birthdate'];
         $this->auth = $userData['auth'] ?? null;
         $this->is_active = $userData['is_active'];
+        $this->avatar = $userData['avatar'] ?? null;
     }
 }
