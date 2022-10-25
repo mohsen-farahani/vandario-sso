@@ -6,28 +6,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    public $id;
-
-    public $mobile;
-
-    public $email;
-
-    public $fname;
-
-    public $lname;
-
-    public $name;
-
-    public $national_code;
-
-    public $birthdate;
-
-    public $auth;
-
-    public $is_active;
-
-    public $avatar;
-
     public function setData(array $userData)
     {
         $this->id = $userData['id'];
