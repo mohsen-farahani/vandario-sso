@@ -7,7 +7,7 @@
 
 ## Installation
 ```
-composer require vandar/sso
+composer require vandario/sso
 ```
 
 ## Documentation
