@@ -19,5 +19,6 @@ class User extends Authenticatable
         $this->auth = $userData['auth'] ?? null;
         $this->is_active = $userData['is_active'];
         $this->avatar = $userData['avatar'] ?? null;
+        $this->default_iban = $userData['default_iban'] ?? null;
     }
 }
