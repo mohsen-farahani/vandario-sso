@@ -3,7 +3,7 @@
 ## requirements
 
 - PHP v8.1
-- Laravel v9.2
+- Laravel >= v9.2
 
 ## Installation
 ```
